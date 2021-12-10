@@ -9,7 +9,6 @@ from util import mainPE
 def predictMalicious(filePath):
     picklePth = os.path.join(os.getcwd(), 'savedmodel', 'model_jlib.pkl')
     pickleFeaturePth = os.path.join(os.getcwd(), 'savedmodel', 'model_jlib_features.pkl')
-    print(picklePth)
     clf = joblib.load(picklePth)
     features = pickle.loads(open(pickleFeaturePth, mode='rb').read())
     data = mainPE.extractAllPeinfo(filePath)
@@ -23,8 +22,12 @@ def main():
      parser = argparse.ArgumentParser(description='Predicts whether file is malicious or not using PE Information')
      parser.add_argument('-f', '--file', help='The file to predict malicious or not', required=True)
      args = parser.parse_args()
+     print("[*] Printing Meta information:\n")
+     string = 'exiftool/exiftool ' + args.file
+     os.system(string)
      try:
          pefile.PE(args.file)
+         print("\n[*] Running Machine Learning")
          predictMalicious(args.file)
      except pefile.PEFormatError:
          print("[-]The file does not contain PE Information.")
