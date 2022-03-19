@@ -127,7 +127,7 @@ def url_cert_info(hostname1):
     except timeout:
         #print("[-]Unable to gather SSL Certificate information, most likely HTTP. Skipping common information.")
         final_url_info['urlInfo'] = "Unable to gather SSL Certificate information, most likely HTTP. Skipping common information."
-    myQueue = queue()
+    myQueue = queue.Queue()
     Thread(target = web_scraper.scraper(hostname1)).start()
     # Thread(target = web_scraper.load_animation()).start()
     # print("\n")
