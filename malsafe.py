@@ -20,11 +20,10 @@ class MakePrediction(Resource):
         posted_hashmd5 = posted_data['hashmd5'] 
         posted_input_stream = posted_data['input_stream'] #base64 data
         posted_type = posted_data['posted_type'] #url, file
-        posted_type_extension = posted_data['posted_extension'] #exe etc.
   
         if posted_type == "file":
             posted_data = base64.b64decode(posted_input_stream)
-            filename = os.path.join(os.path.dirname("downloads/"), posted_hashmd5+"." + posted_type_extension)
+            filename = os.path.join(os.path.dirname("downloads/"), posted_hashmd5)
             with open(filename, 'wb') as f:
                 f.write(posted_data)
             string = 'exiftool/exiftool -j ' + filename
@@ -33,19 +32,22 @@ class MakePrediction(Resource):
             fileResult = {}
             fileResult['metaInfo'] = metaInfo
             fileResult['md5'] = posted_hashmd5
-            try:
-                pefile.PE(filename)
-                fileResult['peInfo'] = pe_test.predictMalicious(filename)
-            except:
-                fileResult['peInfo'] = {}
+            if "PEType" in metaInfo[0]:
+                try:
+                    pefile.PE(filename)
+                    fileResult['peInfoMalicious'] = pe_test.predictMalicious(filename)
+                except:
+                    fileResult['peInfoMalicious'] = {}
+            elif metaInfo[0]["FileType"] == "JPEG":
+                #TODO: Add your JPEG code here.
+                print("JPG Recieved")
             return jsonify(fileResult)
-
         elif posted_type == "url":
             posted_data = base64.b64decode(posted_input_stream).decode('utf-8')
-            x = url_ssl_verf.url_cert_info(posted_data)
-            return jsonify({
-                'result': x
-            })
+            urlResult = {}
+            urlResult['cert_info'] = url_ssl_verf.url_cert_info(posted_data)
+            #TODO: Call your function here and add the result to urlResult.
+            return jsonify(urlResult)
         else:
             return jsonify({
                 'Process': "Failed"
