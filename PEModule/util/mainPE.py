@@ -104,7 +104,7 @@ def extractAllPeinfo(file_path):
         result['NumberOfRvaAndSizes'] = pe.OPTIONAL_HEADER.NumberOfRvaAndSizes
         result['SectionsNb'] = len(pe.sections)
         '''
-            The PE Sections have data whioch are known as entropy and Higher entropy can indicate packed data. 
+            The PE Sections have data which are known as entropy and Higher entropy can indicate packed data. 
             Usually, an entropy level of above 6.7 is considered a good 
         '''
         sectionEntropy = []

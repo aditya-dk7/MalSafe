@@ -7,8 +7,8 @@ from util import mainPE
 
 
 def predictMalicious(filePath):
-    picklePth = os.path.join(os.getcwd(), 'savedmodel', 'model_jlib.pkl')
-    pickleFeaturePth = os.path.join(os.getcwd(), 'savedmodel', 'model_jlib_features.pkl')
+    picklePth = os.path.join(os.getcwd(), 'savedmodel', 'model_jlib_fi.pkl')
+    pickleFeaturePth = os.path.join(os.getcwd(), 'savedmodel', 'model_jlib_features_fi.pkl')
     clf = joblib.load(picklePth)
     features = pickle.loads(open(pickleFeaturePth, mode='rb').read())
     data = mainPE.extractAllPeinfo(filePath)
