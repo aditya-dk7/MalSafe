@@ -2,13 +2,18 @@ import sys
 sys.path.insert(0, '/home/dk7/projectsCap/MalSafe/URLModule')
 sys.path.insert(1, '/home/dk7/projectsCap/MalSafe/PEModule')
 import os
-from flask import Flask, jsonify, request
-from flask_restful import Api, Resource
-import base64
-import pefile
-from URLModule import url_ssl_verf
-from PEModule import pe_test
-import json
+try:
+    from flask import Flask, jsonify, request
+    from flask_restful import Api, Resource
+    import base64
+    import pefile
+    from URLModule import url_ssl_verf
+    from PEModule import pe_test
+    import json
+except:
+    print("[-] Required modules are not installed")
+    print('[+] Installing modules now...')
+    os.system('pip install -r requirements.txt')
 app = Flask(__name__)
 api = Api(app)
 
