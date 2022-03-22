@@ -27,6 +27,7 @@ class MakePrediction(Resource):
                 f.write(posted_data)
             string = 'exiftool/exiftool -j ' + filename
             metaInfo = os.popen(string).read()
+            print(metaInfo)
             metaInfo = json.loads(metaInfo)
             fileResult = {}
             fileResult['metaInfo'] = metaInfo
