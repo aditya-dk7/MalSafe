@@ -6,6 +6,7 @@ import pefile
 import URLModule.url_ssl_verf as url_ssl_verf
 import PEModule.pe_test as pe_test
 import json
+import JPEGModule.JPEG_test as JPEG_test
 
 app = Flask(__name__)
 api = Api(app)
@@ -38,6 +39,8 @@ class MakePrediction(Resource):
                     fileResult['peInfoMalicious'] = {}
             elif metaInfo[0]["FileType"] == "JPEG":
                 #TODO: Add your JPEG code here.
+                fileResult['JPGMalicious']= JPEG_test.check_JPG_malicious(filename)
+
                 print("JPG Recieved")
             return jsonify(fileResult)
         elif posted_type == "url":
