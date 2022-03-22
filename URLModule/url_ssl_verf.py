@@ -8,7 +8,7 @@ from cryptography.x509.oid import NameOID
 import idna
 import ssl
 import re
-import web_scraper
+import URLModule.web_scraper as web_scraper
 from threading import Thread
 import queue
 

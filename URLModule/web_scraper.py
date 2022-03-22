@@ -3,7 +3,7 @@ import urllib.parse
 import re
 import time 
 import sys
-import sql_vul_check
+import URLModule.sql_vul_check as sql_vul_check
 import requests
 import queue
 target_links = []

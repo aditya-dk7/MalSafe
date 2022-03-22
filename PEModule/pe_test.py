@@ -3,7 +3,7 @@ import pickle
 import os
 import argparse
 import pefile
-from util import mainPE
+import PEModule.util.mainPE as mainPE
 
 
 def predictMalicious(filePath):
