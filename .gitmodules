@@ -1,3 +1,0 @@
-[submodule "PEModule/exiftool"]
-	path = PEModule/exiftool
-	url = git@github.com:exiftool/exiftool.git
