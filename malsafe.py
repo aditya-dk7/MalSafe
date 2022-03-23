@@ -7,7 +7,7 @@ import URLModule.url_ssl_verf as url_ssl_verf
 import PEModule.pe_test as pe_test
 import json
 import JPEGModule.JPEG_test as JPEG_test
-import URLModule.phishing as phishing
+#import URLModule.phishing as phishing
 
 app = Flask(__name__)
 api = Api(app)
@@ -50,7 +50,7 @@ class MakePrediction(Resource):
             urlResult = {}
             urlResult['cert_info'] = url_ssl_verf.url_cert_info(posted_data)
             #TODO: Call your function here and add the result to urlResult.
-            urlResult['phishing_info']=phishing.check_URL_malicious(posted_data)
+            #urlResult['phishing_info']=phishing.check_URL_malicious(posted_data)
             return jsonify(urlResult)
         else:
             return jsonify({
