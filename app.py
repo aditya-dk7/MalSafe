@@ -17,7 +17,7 @@ app = Flask(__name__)
 def main():
 	return render_template("index.html")
 
-@app.route("/static/analysis.html", methods=['GET', 'POST'])
+@app.route("/analysis", methods=['GET', 'POST'])
 def run():
 	return render_template("analysis.html")
 
