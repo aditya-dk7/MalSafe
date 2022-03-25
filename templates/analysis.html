@@ -41,7 +41,7 @@
             </div>
     
             <div class="form_container" >
-                <form action="" class="analysis_form" action="/submit" method="post" enctype="multipart/form-data">
+                <form class="analysis_form" action="/submit" method="post" enctype="multipart/form-data">
                     <label for="element_selection" class="form_label">Select the type of element</label>
 
                     <div class="radio_button_container">
@@ -70,16 +70,14 @@
 
                     <button type="submit" id="submit_btn" class="submit_btn">Start Analysis</button>
                 </form>
-                <div>
-                    {% if prediction %}
-                    <img src="{{img_path}}" height="400px" width="400px">
-                      <h2> Your Prediction   : <i> {{prediction}} </i></h2>
-                  
-                      {% endif %}
-                </div>
+                
+                
+                
+                
             </div>
         </div>
     </section>
+    
 
     <script src="index.js"></script>
     <script>
