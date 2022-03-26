@@ -123,6 +123,22 @@
             urlContainer.classList.add("d-none")
             urlContainer.classList.remove("d-unset")
         }
+        
+    </script>
+    <script>
+        var submitBtn = document.getElementById('submit_button')
+        var expression = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
+        var regex = new RegExp(expression);
+        var t = document.getElementById('url_input').value;
+
+        submitBtn.addEventListener('click', function (){
+            if (t.match(regex)) {
+                alert("Successful match");
+            } else {
+                alert("No match");
+            }
+        });
+        
     </script>
 
     
