@@ -44,22 +44,20 @@
                 <form class="analysis_form" action="/submit" method="post" enctype="multipart/form-data">
                     <label for="element_selection" class="form_label">Select the type of element</label>
 
-                    <div class="radio_button_container">
-                        <input type="radio" name="element_selection" id="URL" class="form_input element_selection_radio url-radio">
-                        <label for="URL" class="radio_label"><i class="fa-solid fa-link"></i>URL</label>
-                        
-                        <input type="radio" name="element_selection" id="Image" class="form_input element_selection_radio img-radio">
-                        <label for="Image" class="radio_label"><i class="fa-solid fa-image"></i> Image</label>
+
+                    <div class="user-selection-container">
+                        <div class="user-option d-flex" id="url-option">URL <i class="fa-solid fa-link"></i></div>
+                        <div class="user-option d-flex" id="file-option">File<i class="fa-solid fa-file"></i></div>
                     </div>
 
-                    <div id="url_main_container">
+                    <div id="url_main_container" class="d-none">
                         <label for="url_input" class="form_label">Enter the URL</label>
                         <input type="text" name="url_input" id="url_input" class="form_input">
                         <p class="input_feedback" id="url_feedback">Please enter a valid URL.</p>
                     </div>
 
-                    <div id="image_main_container">
-                        <label for="image_input" class="form_label">Choose the Image</label>
+                    <div id="image_main_container" class="d-none">
+                        <label for="image_input" class="form_label">Choose a File</label>
                         <input type="file" name="image_input" id="image_selection_btn" class="form_input">
                         <!-- <div class="custom_button_container">
                             <button class="custom_file_button" id="custom-btn" >Upload Image</button>
@@ -79,7 +77,7 @@
     </section>
     
 
-    <script src="index.js"></script>
+    <!-- <script src="index.js"></script>
     <script>
             const realFileBtn = document.getElementById('image_selection_btn');
             const customBtn = document.getElementById('custom-btn');
@@ -96,6 +94,37 @@
                     customText.innerHTML = "Please choose a file.";
                 }
             })
+    </script> -->
+
+    <script>
+        let fileBtn = document.getElementById('file-option')
+        let urlBtn = document.getElementById('url-option')
+
+        let fileContainer = document.getElementById('image_main_container')
+        let urlContainer = document.getElementById('url_main_container')
+
+        fileBtn.addEventListener("click", setFileBtn)
+        urlBtn.addEventListener("click", setURLBtn)
+
+        function setURLBtn(){
+            fileBtn.classList.remove("selected-option")
+            fileContainer.classList.remove("d-unset")
+            fileContainer.classList.add("d-none")
+
+            urlBtn.classList.add("selected-option")
+            urlContainer.classList.remove("d-none")
+            urlContainer.classList.add("d-unset")
+        }
+
+        function setFileBtn(){
+            fileBtn.classList.add("selected-option")
+            fileContainer.classList.add("d-unset")
+            fileContainer.classList.remove("d-none")
+
+            urlBtn.classList.remove("selected-option")
+            urlContainer.classList.add("d-none")
+            urlContainer.classList.remove("d-unset")
+        }
     </script>
 
     

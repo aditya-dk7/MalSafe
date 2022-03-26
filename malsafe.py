@@ -5,7 +5,6 @@ import URLModule.url_ssl_verf as url_ssl_verf
 import PEModule.pe_test as pe_test
 import json
 import JPEGModule.JPEG_test as JPEG_test
-import URLModule.phishing as phishing
 
 app = Flask(__name__)
 
@@ -31,6 +30,7 @@ def get_output():
 			filename = os.path.join(os.path.dirname("static/"), img.filename)
 			string = 'exiftool/exiftool -j ' + filename
 			metaInfo = os.popen(string).read()
+			print(metaInfo)
 			metaInfo = json.loads(metaInfo)
 			fileResult = {}
 			fileResult['metaInfo'] = metaInfo
@@ -50,7 +50,6 @@ def get_output():
 		else:
 			urlResult = {}
 			urlResult['cert_info'] = url_ssl_verf.url_cert_info(url)
-			urlResult['phishing_info']=phishing.check_URL_malicious(url)
 			urlResult['type'] = 3
 			return render_template("result.html", prediction = urlResult)
 
