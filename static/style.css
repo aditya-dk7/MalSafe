@@ -425,7 +425,7 @@ label{
 }
 
 .table_heading, .table_data{
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    border: 1px solid #60B2E5;
     text-align: left;
     padding: 1rem;
     justify-content: center;
@@ -436,7 +436,7 @@ label{
 .table_heading{
     background-color: #D8B4E2;
     text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    border: 1px solid #60B2E5;
     font-weight: 700;
     color: #0C090D;
 }
@@ -447,7 +447,10 @@ label{
     color: #D8B4E2;
 }
 
-
+.property_value{
+    color: #8FCB9B;
+    font-weight: 600;
+}
 /* Progress Bar CSS */
 
 .progress_page{
@@ -531,4 +534,28 @@ label{
     -o-animation: rotating 2s linear infinite;
     animation: rotating 2s linear infinite;
   }
-  
+  .download_report_btn, #download{
+    max-width: 600px;
+    padding: 1rem;
+    background: transparent;
+    border: 1px solid #8FCB9B;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1.2rem auto;
+    font-weight: 500;
+    transition: 0.3s ease all;
+    cursor: pointer;
+}
+
+.download_report_btn a, #download{
+    text-decoration: none;
+    color: #8FCB9B;
+}
+#download:hover a, #download:hover i{
+    color: #0C090D;
+}
+#download:hover{
+    background-color: #8FCB9B;
+    color: #0C090D;
+}
