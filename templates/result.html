@@ -4,16 +4,256 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>MalSafe - Capstone Project</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 <body>
+    <section class="progress_page" id="progress_page">
+        <div class="progress_container">
+            <div class="progress_container-content">
+                <p class="progress_container_main_heading">Thanks for using Malsafe! 🙏🏻 </p>
+                <p class="progress_container_subtext">Please wait while we are preparing the report. </p>
+            </div>
+
+            <div class="progress_bar">
+                <i class="fa-solid fa-spinner rotating"></i>
+            </div>
+        </div>
+    </section>
+
+    <div class="special_container" id="special_container">
+        <nav>
+            <div class="logo_container">
+                <img src="static/images/malsafe-logo-white.png" alt="MalSafe" class="logo">
+            </div>
+    
+            <div class="navigation_links_container">
+                <a href="#" class="navigation_link">Home</a>
+                <a href="#" class="navigation_link">About</a>
+                <a href="#" class="navigation_link">Documentation</a>
+                <a href="#" class="navigation_link">Team</a>
+            </div>
+    
+            <div class="nav_button_container">
+                <button class="nav_bt">View on Github</button>
+            </div>
+        </nav>
+    
+        <section class="result_section">
+            <div class="container">
+                <p class="result_heading">Results for Element Analysis</p>
+                <p class="result_subtext">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam ut consectetur sunt dolor, provident voluptatibus quas tenetur nulla, unde deleniti obcaecati labore debitis voluptates, ducimus ex commodi. Distinctio, magnam. Ipsum?</p>
+                
+                <div class="download_report_btn"><a href="">Download Report <i class="fa-solid fa-download"></i> </a></div>    
+            </div>
+        </section>
+        <section class="result_table_section">
+            <div class="container">
+                <div class="result_table">
+
+
     <!-- 1: PEFILE, 2: JPG, 3: URL -->
-    {% if prediction %}
-        <h2> FileSize  : <i> {{prediction}} </i></h2>    
-        {% if prediction['type'] == 1 %}
-        <h2> FILE </h2> 
-        {% endif %}
+    {% if prediction['type'] == 1 %}
+    <table class="table_main" id="pe_file_analysis" >
+        <tr class="table_row">
+            <th class="table_heading">Property</th>
+            <th class="table_heading">Value</th>
+        </tr>
+
+        <tr class="table_row">
+            <td class="table_data property_name">File Name</td>
+            <td class="table_data property_value">{{prediction['metaInfo'][0]['FileName']}}</td>
+        </tr>
+
+        <tr class="table_row">
+            <td class="table_data property_name">File Size</td>
+            <td class="table_data property_value">{{prediction['metaInfo'][0]['FileSize']}}</td>
+        </tr>
+
+        <tr class="table_row">
+            <td class="table_data property_name">File Modify Date</td>
+            <td class="table_data property_value">{{prediction['metaInfo'][0]['FileModifyDate']}}</td>
+        </tr>
+
+        <tr class="table_row">
+            <td class="table_data property_name">File Permissions</td>
+            <td class="table_data property_value">{{prediction['metaInfo'][0]['FilePermissions']}}</td>
+        </tr>
+
+        <tr class="table_row">
+            <td class="table_data property_name">File Type</td>
+            <td class="table_data property_value">{{prediction['metaInfo'][0]['FileType']}}</td>
+        </tr>
+
+        <tr class="table_row">
+            <td class="table_data property_name">File Type Extension</td>
+            <td class="table_data property_value">{{prediction['metaInfo'][0]['FileTypeExtension']}}</td>
+        </tr>
+
+        <tr class="table_row">
+            <td class="table_data property_name">Machine Type</td>
+            <td class="table_data property_value">{{prediction['metaInfo'][0]['MachineType']}}</td>
+        </tr>
+
+        <tr class="table_row">
+            <td class="table_data property_name">Time Stamp</td>
+            <td class="table_data property_value">{{prediction['metaInfo'][0]['TimeStamp']}}</td>
+        </tr>
+
+        <tr class="table_row">
+            <td class="table_data property_name">Code Size</td>
+            <td class="table_data property_value">{{prediction['metaInfo'][0]['CodeSize']}}</td>
+        </tr>
+
+        <tr class="table_row">
+            <td class="table_data property_name">File Version Number</td>
+            <td class="table_data property_value">{{prediction['metaInfo'][0]['FileVersionNumber']}}</td>
+        </tr>
+
+        <tr class="table_row">
+            <td class="table_data property_name">File OS</td>
+            <td class="table_data property_value">{{prediction['metaInfo'][0]['FileOS']}}</td>
+        </tr>
+
+        <tr class="table_row">
+            <td class="table_data property_name">Character Set</td>
+            <td class="table_data property_value">{{prediction['metaInfo'][0]['CharacterSet']}}</td>
+        </tr>
+
+        <tr class="table_row">
+            <td class="table_data property_name">Company Name</td>
+            <td class="table_data property_value">{{prediction['metaInfo'][0]['CompanyName']}}</td>
+        </tr>
+
+        <tr class="table_row">
+            <td class="table_data property_name">MD5</td>
+            <td class="table_data property_value">{{prediction['md5']}}</td>
+        </tr>
+        <tr class="table_row">
+            <td class="table_data property_name">SHA256</td>
+            <td class="table_data property_value">{{prediction['sha256']}}</td>
+        </tr>
+
+        <tr class="table_row">
+            <td class="table_data property_name">Malicious</td>
+            <td class="table_data property_value">{{prediction['peInfoMalicious']}}</td>
+        </tr>
+    </table>
+       
+    
+
+    {% elif prediction['type'] == 2 %}
+    <table class="table_main" id="img_file_analysis" >
+        <tr class="table_row">
+            <th class="table_heading">Property</th>
+            <th class="table_heading">Value</th>
+        </tr>
+
+        <tr class="table_row">
+            <td class="table_data property_name">File Name</td>
+            <td class="table_data property_value">{{prediction['metaInfo'][0]['FileName']}}</td>
+        </tr>
+
+        <tr class="table_row">
+            <td class="table_data property_name">File Size</td>
+            <td class="table_data property_value">{{prediction['metaInfo'][0]['FileSize']}}</td>
+        </tr>
+
+        <tr class="table_row">
+            <td class="table_data property_name">File Modify Date</td>
+            <td class="table_data property_value">{{prediction['metaInfo'][0]['FileModifyDate']}}</td>
+        </tr>
+
+        <tr class="table_row">
+            <td class="table_data property_name">File Permissions</td>
+            <td class="table_data property_value">{{prediction['metaInfo'][0]['FilePermissions']}}</td>
+        </tr>
+
+        <tr class="table_row">
+            <td class="table_data property_name">File Type</td>
+            <td class="table_data property_value">{{prediction['metaInfo'][0]['FileType']}}</td>
+        </tr>
+
+        <tr class="table_row">
+            <td class="table_data property_name">File Type Extension</td>
+            <td class="table_data property_value">{{prediction['metaInfo'][0]['FileTypeExtension']}}</td>
+        </tr>
+
+        <tr class="table_row">
+            <td class="table_data property_name">JFIF Version</td>
+            <td class="table_data property_value">{{prediction['metaInfo'][0]['JFIFVersion']}}</td>
+        </tr>
+
+        <tr class="table_row">
+            <td class="table_data property_name">XResolution</td>
+            <td class="table_data property_value">{{prediction['metaInfo'][0]['XResolution']}}</td>
+        </tr>
+
+        <tr class="table_row">
+            <td class="table_data property_name">YResolution</td>
+            <td class="table_data property_value">{{prediction['metaInfo'][0]['YResolution']}}</td>
+        </tr>
+
+        <tr class="table_row">
+            <td class="table_data property_name">Image Width</td>
+            <td class="table_data property_value">{{prediction['metaInfo'][0]['ImageWidth']}}</td>
+        </tr>
+
+        <tr class="table_row">
+            <td class="table_data property_name">Image Height</td>
+            <td class="table_data property_value">{{prediction['metaInfo'][0]['ImageHeight']}}</td>
+        </tr>
+
+        <tr class="table_row">
+            <td class="table_data property_name">Encoding Process</td>
+            <td class="table_data property_value">{{prediction['metaInfo'][0]['EncodingProcess']}}</td>
+        </tr>
+
+        <tr class="table_row">
+            <td class="table_data property_name">MD5</td>
+            <td class="table_data property_value">{{prediction['md5']}}</td>
+        </tr>
+
+        <tr class="table_row">
+            <td class="table_data property_name">SHA256</td>
+            <td class="table_data property_value">{{prediction['sha256']}}</td>
+        </tr>
+
+        <tr class="table_row">
+            <td class="table_data property_name">Malicious</td>
+            <td class="table_data property_value">{{prediction['JPGMalicious']}}</td>
+        </tr>
+    </table>
+    {% else %}
+
     {% endif %}
+
+
+    </div>
+    </div>
+    </section>
+    </div>
+
+    <script>
+        const myTimeout = setTimeout(closeModal, 200);
+
+        function myStopFunction() {
+        clearTimeout(myTimeout);
+        }
+
+        function closeModal(){
+            var modal = document.getElementById('progress_page')
+            var mainPage = document.getElementById('special_container')
+
+            modal.style.display = 'none';
+            mainPage.style.display = 'unset'
+        }
+    </script>
 
 </body>
 </html>
