@@ -29,7 +29,7 @@
     <div class="special_container" id="special_container">
         <nav>
             <div class="logo_container">
-                <img src="images/malsafe-logo-white.png" alt="MalSafe" class="logo">
+                <img src="static/images/malsafe-logo-white.png" alt="MalSafe" class="logo">
             </div>
     
             <div class="navigation_links_container">
@@ -59,90 +59,95 @@
 
     <!-- 1: PEFILE, 2: JPG, 3: URL -->
     {% if prediction['type'] == 1 %}
-       <table class="table_main" id="pe_file_analysis" >
-            <tr class="table_row">
-                <th class="table_heading">Property</th>
-                <th class="table_heading">Value</th>
-            </tr>
+    <table class="table_main" id="pe_file_analysis" >
+        <tr class="table_row">
+            <th class="table_heading">Property</th>
+            <th class="table_heading">Value</th>
+        </tr>
 
-            <tr class="table_row">
-                <td class="table_data property_name">File Name</td>
-                <td class="table_data property_value">{{prediction['metaInfo'][0]['FileName']}}</td>
-            </tr>
+        <tr class="table_row">
+            <td class="table_data property_name">File Name</td>
+            <td class="table_data property_value">{{prediction['metaInfo'][0]['FileName']}}</td>
+        </tr>
 
-            <tr class="table_row">
-                <td class="table_data property_name">File Size</td>
-                <td class="table_data property_value">{{prediction['metaInfo'][0]['FileSize']}}</td>
-            </tr>
+        <tr class="table_row">
+            <td class="table_data property_name">File Size</td>
+            <td class="table_data property_value">{{prediction['metaInfo'][0]['FileSize']}}</td>
+        </tr>
 
-            <tr class="table_row">
-                <td class="table_data property_name">File Modify Date</td>
-                <td class="table_data property_value">{{prediction['metaInfo'][0]['FileModifyDate']}}</td>
-            </tr>
+        <tr class="table_row">
+            <td class="table_data property_name">File Modify Date</td>
+            <td class="table_data property_value">{{prediction['metaInfo'][0]['FileModifyDate']}}</td>
+        </tr>
 
-            <tr class="table_row">
-                <td class="table_data property_name">File Permissions</td>
-                <td class="table_data property_value">{{prediction['metaInfo'][0]['FilePermissions']}}</td>
-            </tr>
+        <tr class="table_row">
+            <td class="table_data property_name">File Permissions</td>
+            <td class="table_data property_value">{{prediction['metaInfo'][0]['FilePermissions']}}</td>
+        </tr>
 
-            <tr class="table_row">
-                <td class="table_data property_name">File Type</td>
-                <td class="table_data property_value">{{prediction['metaInfo'][0]['FileType']}}</td>
-            </tr>
+        <tr class="table_row">
+            <td class="table_data property_name">File Type</td>
+            <td class="table_data property_value">{{prediction['metaInfo'][0]['FileType']}}</td>
+        </tr>
 
-            <tr class="table_row">
-                <td class="table_data property_name">File Type Extension</td>
-                <td class="table_data property_value">{{prediction['metaInfo'][0]['FileTypeExtension']}}</td>
-            </tr>
+        <tr class="table_row">
+            <td class="table_data property_name">File Type Extension</td>
+            <td class="table_data property_value">{{prediction['metaInfo'][0]['FileTypeExtension']}}</td>
+        </tr>
 
-            <tr class="table_row">
-                <td class="table_data property_name">Machine Type</td>
-                <td class="table_data property_value">{{prediction['metaInfo'][0]['MachineType']}}</td>
-            </tr>
+        <tr class="table_row">
+            <td class="table_data property_name">Machine Type</td>
+            <td class="table_data property_value">{{prediction['metaInfo'][0]['MachineType']}}</td>
+        </tr>
 
-            <tr class="table_row">
-                <td class="table_data property_name">Time Stamp</td>
-                <td class="table_data property_value">{{prediction['metaInfo'][0]['TimeStamp']}}</td>
-            </tr>
+        <tr class="table_row">
+            <td class="table_data property_name">Time Stamp</td>
+            <td class="table_data property_value">{{prediction['metaInfo'][0]['TimeStamp']}}</td>
+        </tr>
 
-            <tr class="table_row">
-                <td class="table_data property_name">Code Size</td>
-                <td class="table_data property_value">{{prediction['metaInfo'][0]['CodeSize']}}</td>
-            </tr>
+        <tr class="table_row">
+            <td class="table_data property_name">Code Size</td>
+            <td class="table_data property_value">{{prediction['metaInfo'][0]['CodeSize']}}</td>
+        </tr>
 
-            <tr class="table_row">
-                <td class="table_data property_name">File Version Number</td>
-                <td class="table_data property_value">{{prediction['metaInfo'][0]['FileVersionNumber']}}</td>
-            </tr>
+        <tr class="table_row">
+            <td class="table_data property_name">File Version Number</td>
+            <td class="table_data property_value">{{prediction['metaInfo'][0]['FileVersionNumber']}}</td>
+        </tr>
 
-            <tr class="table_row">
-                <td class="table_data property_name">File OS</td>
-                <td class="table_data property_value">{{prediction['metaInfo'][0]['FileOS']}}</td>
-            </tr>
+        <tr class="table_row">
+            <td class="table_data property_name">File OS</td>
+            <td class="table_data property_value">{{prediction['metaInfo'][0]['FileOS']}}</td>
+        </tr>
 
-            <tr class="table_row">
-                <td class="table_data property_name">Character Set</td>
-                <td class="table_data property_value">{{prediction['metaInfo'][0]['CharacterSet']}}</td>
-            </tr>
+        <tr class="table_row">
+            <td class="table_data property_name">Character Set</td>
+            <td class="table_data property_value">{{prediction['metaInfo'][0]['CharacterSet']}}</td>
+        </tr>
 
-            <tr class="table_row">
-                <td class="table_data property_name">Company Name</td>
-                <td class="table_data property_value">{{prediction['metaInfo'][0]['CompanyName']}}</td>
-            </tr>
+        <tr class="table_row">
+            <td class="table_data property_name">Company Name</td>
+            <td class="table_data property_value">{{prediction['metaInfo'][0]['CompanyName']}}</td>
+        </tr>
 
-            <tr class="table_row">
-                <td class="table_data property_name">MD5</td>
-                <td class="table_data property_value">{{prediction['md5']}}</td>
-            </tr>
+        <tr class="table_row">
+            <td class="table_data property_name">MD5</td>
+            <td class="table_data property_value">{{prediction['md5']}}</td>
+        </tr>
+        <tr class="table_row">
+            <td class="table_data property_name">SHA256</td>
+            <td class="table_data property_value">{{prediction['sha256']}}</td>
+        </tr>
 
-            <tr class="table_row">
-                <td class="table_data property_name">Malicious</td>
-                <td class="table_data property_value">{{prediction['peInfoMalicious']}}</td>
-            </tr>
-        </table>
-    {% endif %}
+        <tr class="table_row">
+            <td class="table_data property_name">Malicious</td>
+            <td class="table_data property_value">{{prediction['peInfoMalicious']}}</td>
+        </tr>
+    </table>
+       
+    
 
-    {% if prediction['type'] == 2 %}
+    {% elif prediction['type'] == 2 %}
     <table class="table_main" id="img_file_analysis" >
         <tr class="table_row">
             <th class="table_heading">Property</th>
@@ -215,15 +220,18 @@
         </tr>
 
         <tr class="table_row">
+            <td class="table_data property_name">SHA256</td>
+            <td class="table_data property_value">{{prediction['sha256']}}</td>
+        </tr>
+
+        <tr class="table_row">
             <td class="table_data property_name">Malicious</td>
             <td class="table_data property_value">{{prediction['JPGMalicious']}}</td>
         </tr>
     </table>
+    {% else %}
 
     {% endif %}
-
-
-
 
 
     </div>
@@ -232,7 +240,7 @@
     </div>
 
     <script>
-        const myTimeout = setTimeout(closeModal, 5000);
+        const myTimeout = setTimeout(closeModal, 200);
 
         function myStopFunction() {
         clearTimeout(myTimeout);

@@ -9,6 +9,7 @@ body{
     background-position: center;
     background-repeat: no-repeat;
 }
+a {text-decoration: none; }
 
 nav{
     display: flex;
@@ -446,9 +447,6 @@ label{
     color: #D8B4E2;
 }
 
-#pe_file_analysis{
-    display: none;
-}
 
 /* Progress Bar CSS */
 
