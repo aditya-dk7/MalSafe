@@ -8,7 +8,6 @@ body{
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    color: white;
 }
 
 nav{
@@ -97,6 +96,11 @@ nav{
 .primary_cta{
     background-color: #8FCB9B;
     border-color: #8FCB9B;
+}
+
+.primary_cta a{
+    text-decoration: none;
+    color: #0C090D;
 }
 
 .secondary_cta{
@@ -247,8 +251,38 @@ label{
     color: #0C090D;
 }
 
-.fa-link, .fa-image{
+.fa-link, .fa-file{
     margin: 0 0.5rem
+}
+
+.user-selection-container{
+    display: flex;
+    width: 100%;
+}
+
+.user-option{
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 1rem;
+    background: transparent;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.selected-option{
+    background-color: #8FCB9B;
+    color: #0C090D;
+    border: 1px solid #8FCB9B;
+}
+
+.d-none{
+    display: none;
+}
+
+.d-unset{
+    display: unset;
 }
 
 #url_input{
@@ -318,4 +352,3 @@ label{
 .form_input{
     margin-bottom: 0.4rem;
 }
-
