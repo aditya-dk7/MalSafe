@@ -2,7 +2,6 @@ import requests
 
 def find_error_based_sql(list_of_links):
     error_based_sql = {}
-    print("[+] Checking the above list for Error Based SQL INJECTION")
     flag = 1
     for i in list_of_links:
         initial = "'"
