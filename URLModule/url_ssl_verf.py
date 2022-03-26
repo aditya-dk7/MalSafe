@@ -115,28 +115,19 @@ def url_cert_info(hostname1):
     final_url_info = {}
     try:
         conn.connect((hostname, 443))
-        #print("[+]The url has SSL Certificate, and website uses HTTPS.")
-        #print("Printing common information:")
-        #print_basic_info(get_certificate(hostname, 443))
-        final_url_info['urlInfo'] = json_print_basic_info(get_certificate(hostname, 443))
+        final_url_info['urlInfo'] = json_print_basic_info(get_certificate(hostname, 443)) 
     except ssl.CertificateError:
-        # print("[-]The url '" + hostname + "' certificates fail to match similar alternative names. The URL has certificate error.")
-        # print("Printing common information:")
-        # print_basic_info(get_certificate(hostname, 443))
         final_url_info['urlInfo'] = json_print_basic_info(get_certificate(hostname, 443))
     except timeout:
-        #print("[-]Unable to gather SSL Certificate information, most likely HTTP. Skipping common information.")
         final_url_info['urlInfo'] = "Unable to gather SSL Certificate information, most likely HTTP. Skipping common information."
+    
     myQueue = queue.Queue()
     Thread(target = web_scraper.scraper(hostname1)).start()
-    # Thread(target = web_scraper.load_animation()).start()
-    # print("\n")
-    # Thread(target = web_scraper.print_target_links()).start()
-    # print("\n")
     t = Thread(web_scraper.call_sql_vul_check(myQueue))
     t.start()
     t.join()
     val = myQueue.get()
     final_url_info['sqlVul'] = val
+    web_scraper.target_links = []  
     return final_url_info
     

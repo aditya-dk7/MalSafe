@@ -1,7 +1,5 @@
+from flask import Flask, render_template, request
 import os
-from flask import Flask, jsonify, request
-from flask_restful import Api, Resource
-import base64
 import pefile
 import URLModule.url_ssl_verf as url_ssl_verf
 import PEModule.pe_test as pe_test
@@ -10,56 +8,52 @@ import JPEGModule.JPEG_test as JPEG_test
 import URLModule.phishing as phishing
 
 app = Flask(__name__)
-api = Api(app)
+
+# routes
+@app.route("/", methods=['GET', 'POST'])
+def main():
+	return render_template("index.html")
+
+@app.route("/analysis", methods=['GET', 'POST'])
+def run():
+	return render_template("analysis.html")
 
 
-class MakePrediction(Resource):
-    @staticmethod
-    def post():
-        posted_data = request.get_json()
-        posted_hashmd5 = posted_data['hashmd5'] 
-        posted_input_stream = posted_data['input_stream'] #base64 data
-        posted_type = posted_data['posted_type'] #url, file
-  
-        if posted_type == "file":
-            posted_data = base64.b64decode(posted_input_stream)
-            filename = os.path.join(os.path.dirname("downloads/"), posted_hashmd5)
-            with open(filename, 'wb') as f:
-                f.write(posted_data)
-            string = 'exiftool/exiftool -j ' + filename
-            metaInfo = os.popen(string).read()
-            print(metaInfo)
-            metaInfo = json.loads(metaInfo)
-            fileResult = {}
-            fileResult['metaInfo'] = metaInfo
-            fileResult['md5'] = posted_hashmd5
-            if "PEType" in metaInfo[0]:
-                try:
-                    pefile.PE(filename)
-                    fileResult['peInfoMalicious'] = pe_test.predictMalicious(filename)
-                except:
-                    fileResult['peInfoMalicious'] = {}
-            elif metaInfo[0]["FileType"] == "JPEG":
-                #TODO: Add your JPEG code here.
-                fileResult['JPGMalicious']= JPEG_test.check_JPG_malicious(filename)
 
-                print("JPG Recieved")
-            return jsonify(fileResult)
-        elif posted_type == "url":
-            posted_data = base64.b64decode(posted_input_stream).decode('utf-8')
-            urlResult = {}
-            urlResult['cert_info'] = url_ssl_verf.url_cert_info(posted_data)
-            #TODO: Call your function here and add the result to urlResult.
-            urlResult['phishing_info']=phishing.check_URL_malicious(posted_data)
-            return jsonify(urlResult)
-        else:
-            return jsonify({
-                'Process': "Failed"
-            })
+@app.route("/submit", methods = ['GET', 'POST'])
+def get_output():
+	if request.method == 'POST':
+		img = request.files['image_input']
+		url = request.form['url_input']
+		if img.filename != "":
+			img_path = "static/" + img.filename	
+			img.save(img_path)
+			filename = os.path.join(os.path.dirname("static/"), img.filename)
+			string = 'exiftool/exiftool -j ' + filename
+			metaInfo = os.popen(string).read()
+			metaInfo = json.loads(metaInfo)
+			fileResult = {}
+			fileResult['metaInfo'] = metaInfo
+			fileResult['md5'] = "0bfb331611cbcf420b38f73e1936f836"
+			if "PEType" in metaInfo[0]:
+				try:
+					pefile.PE(filename)
+					fileResult['peInfoMalicious'] = pe_test.predictMalicious(filename)
+					fileResult['type'] = 1
+				except:
+					fileResult['peInfoMalicious'] = {}
+					fileResult['type'] = 1
+			elif metaInfo[0]["FileType"] == "JPEG":
+				fileResult['JPGMalicious']= JPEG_test.check_JPG_malicious(filename)
+				fileResult['type'] = 2
+			return render_template("result.html", prediction = fileResult)
+		else:
+			urlResult = {}
+			urlResult['cert_info'] = url_ssl_verf.url_cert_info(url)
+			urlResult['phishing_info']=phishing.check_URL_malicious(url)
+			urlResult['type'] = 3
+			return render_template("result.html", prediction = urlResult)
 
-
-api.add_resource(MakePrediction, '/malsafe')
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ =='__main__':
+	#app.debug = True
+	app.run(debug = True)
