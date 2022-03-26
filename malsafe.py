@@ -6,6 +6,7 @@ import PEModule.pe_test as pe_test
 import json
 import JPEGModule.JPEG_test as JPEG_test
 import URLModule.phishing as phishing
+import hashlib
 
 app = Flask(__name__)
 
@@ -34,7 +35,14 @@ def get_output():
 			metaInfo = json.loads(metaInfo)
 			fileResult = {}
 			fileResult['metaInfo'] = metaInfo
-			fileResult['md5'] = "0bfb331611cbcf420b38f73e1936f836"
+			hash_md5 = hashlib.md5()
+			hash_sha256 = hashlib.sha256()
+			with open(filename, "rb") as f:
+				for chunk in iter(lambda: f.read(4096), b""):
+					hash_md5.update(chunk)
+					hash_sha256.update(chunk)		
+			fileResult['md5'] = hash_md5.hexdigest()
+			fileResult['sha256'] = hash_sha256.hexdigest()
 			if "PEType" in metaInfo[0]:
 				try:
 					pefile.PE(filename)
@@ -51,6 +59,8 @@ def get_output():
 			urlResult = {}
 			urlResult['cert_info'] = url_ssl_verf.url_cert_info(url)
 			urlResult['phishing_info']=phishing.check_URL_malicious(url)
+			urlResult['md5'] = hashlib.md5(url.encode()).hexdigest()
+			urlResult['sha256'] = hashlib.sha256(url.encode()).hexdigest()
 			urlResult['type'] = 3
 			return render_template("result.html", prediction = urlResult)
 
