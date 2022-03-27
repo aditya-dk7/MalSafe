@@ -62,6 +62,7 @@ def get_output():
 			urlResult['md5'] = hashlib.md5(url.encode()).hexdigest()
 			urlResult['sha256'] = hashlib.sha256(url.encode()).hexdigest()
 			urlResult['type'] = 3
+			print(urlResult)
 			return render_template("result.html", prediction = urlResult)
 
 if __name__ =='__main__':

@@ -232,7 +232,67 @@
 
         
     </table>
-    {% else %}
+    
+    {% elif prediction['type'] == 3 %}
+    <table class="table_main" id="url_file_analysis" >
+        <tr class="table_row">
+            <th class="table_heading">Property</th>
+            <th class="table_heading">Value</th>
+        </tr>
+
+        <tr class="table_row">
+            <td class="table_data property_name">Host Name</td>
+            <td class="table_data property_value">{{prediction['cert_info']['urlInfo']['hostname']}}</td>
+        </tr>
+
+        <tr class="table_row">
+            <td class="table_data property_name">Phishing Website</td>
+            <td class="table_data property_value">{{prediction['phishing_info']}}</td>
+        </tr>
+
+        <tr class="table_row">
+            <td class="table_data property_name">MD5</td>
+            <td class="table_data property_value">{{prediction['md5']}}</td>
+        </tr>
+
+        <tr class="table_row">
+            <td class="table_data property_name">SHA256</td>
+            <td class="table_data property_value">{{prediction['sha256']}}</td>
+        </tr>
+
+        <tr class="table_row">
+            <td class="table_data property_name">Peer Name</td>
+            <td class="table_data property_value">{{prediction['cert_info']['urlInfo']['peername']}}</td>
+        </tr>
+
+        <tr class="table_row">
+            <td class="table_data property_name">Common Name</td>
+            <td class="table_data property_value">{{prediction['cert_info']['urlInfo']['commonname']}}</td>
+        </tr>
+        
+        <tr class="table_row">
+            <td class="table_data property_name">Subject Alternate Name</td>
+            <td class="table_data property_value">{{prediction['cert_info']['urlInfo']['SAN']}}</td>
+        </tr>
+
+        <tr class="table_row">
+            <td class="table_data property_name">Issuer Name</td>
+            <td class="table_data property_value">{{prediction['cert_info']['urlInfo']['issuer']}}</td>
+        </tr>
+        
+        <tr class="table_row">
+            <td class="table_data property_name">Not Before Certificate</td>
+            <td class="table_data property_value">{{prediction['cert_info']['urlInfo']['notbefore']}}</td>
+        </tr>
+
+        <tr class="table_row">
+            <td class="table_data property_name">Not After Certificate</td>
+            <td class="table_data property_value">{{prediction['cert_info']['urlInfo']['notafter']}}</td>
+        </tr>
+
+        
+
+    </table>
 
     {% endif %}
 
