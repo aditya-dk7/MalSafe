@@ -331,7 +331,7 @@ label{
 
 .submit_btn{
     background-color: #D8B4E2;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     width: 100%;
