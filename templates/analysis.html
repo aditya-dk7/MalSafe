@@ -41,7 +41,7 @@
             </div>
     
             <div class="form_container" >
-                <form class="analysis_form" action="/submit" method="post" enctype="multipart/form-data">
+                <form class="analysis_form" action="/submit" onsubmit="return verifyURL();" method="post" enctype="multipart/form-data">
                     <label for="element_selection" class="form_label">Select the type of element</label>
 
 
@@ -58,7 +58,7 @@
 
                     <div id="image_main_container" class="d-none">
                         <label for="image_input" class="form_label">Choose a File</label>
-                        <input type="file" name="image_input" id="image_selection_btn" class="form_input">
+                        <input type="file" name="image_input" id="image_selection_btn fupload" onchange="checkExtension()" class="form_input">
                         <!-- <div class="custom_button_container">
                             <button class="custom_file_button" id="custom-btn" >Upload Image</button>
                             <span class="custom_btn_content" id="custom-text">Please choose a file</span>
@@ -75,7 +75,12 @@
             </div>
         </div>
     </section>
-    
+    <script>
+        function checkExtension() {
+        var file = document.querySelector("#fUpload");
+        if ( /\.(jpe?g)$/i.test(file.files[0].name) === false ) { alert("not an image!"); }
+}
+    </script>
 
     <!-- <script src="index.js"></script>
     <script>
@@ -125,6 +130,35 @@
         }
         
     </script>
+
+<script>
+
+        function verifyURL(){
+
+            let fileButton = document.getElementById('file-option')
+        let urlButton = document.getElementById('url-option')
+        let urlSelected= urlButton.classList.contains("selected-option")
+        let fileSelected= fileButton.classList.contains("selected-option")
+        let urlFeedback=document.getElementById("url_feedback")    
+        if(urlSelected){
+            let urlContent=document.getElementById("url_input").value
+            let expression = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
+            let regex = new RegExp(expression);
+            if (urlContent.match(regex)) {
+                return true
+            }else{
+                urlFeedback.style.display="block"
+                return false
+                
+            }
+             
+        }
+
+        }
+
+</script>
+
+
     <script>
         var submitBtn = document.getElementById('submit_button')
         var expression = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
