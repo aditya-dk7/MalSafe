@@ -15,6 +15,6 @@ def check_URL_malicious(url):
     url_predict = xgb.predict(legitimate)
     url_predict[0]
     if (url_predict[0] == 0):
-        return "Phishing website"
+        return "Yes"
     else:
-        return "Legitimate website"
+        return "No"
