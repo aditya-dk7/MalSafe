@@ -563,3 +563,11 @@ label{
     background-color: #8FCB9B;
     color: #0C090D;
 }
+.feature_container{
+    transition: 0.3s ease all;
+
+}
+.feature_container:hover{
+    transform: scale(1.1);
+
+}
