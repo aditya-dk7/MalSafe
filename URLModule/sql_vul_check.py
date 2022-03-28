@@ -24,6 +24,7 @@ def find_error_based_sql(list_of_links):
             error_based_sql[i] = "Injectable Oracle detected"
             flag = 0
 
-    if flag is 1:
+    if flag == 1:
         print("\n[-] No Error Based SQL Vulnerability Found.")
+        return "No Error Based SQL Vulnerability Found"
     return error_based_sql

@@ -115,12 +115,14 @@ def url_cert_info(hostname1):
     final_url_info = {}
     try:
         conn.connect((hostname, 443))
-        final_url_info['urlInfo'] = json_print_basic_info(get_certificate(hostname, 443)) 
+        final_url_info['urlInfo'] = json_print_basic_info(get_certificate(hostname, 443))
+        final_url_info['http'] = 0 
     except ssl.CertificateError:
         final_url_info['urlInfo'] = json_print_basic_info(get_certificate(hostname, 443))
+        final_url_info['http'] = 0
     except timeout:
-        final_url_info['urlInfo'] = "Unable to gather SSL Certificate information, most likely HTTP. Skipping common information."
-    
+        final_url_info['urlInfo'] = "Unable to gather SSL Certificate information, most likely HTTP"
+        final_url_info['http'] = 1
     myQueue = queue.Queue()
     Thread(target = web_scraper.scraper(hostname1)).start()
     t = Thread(web_scraper.call_sql_vul_check(myQueue))

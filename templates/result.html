@@ -240,10 +240,7 @@
             <th class="table_heading">Value</th>
         </tr>
 
-        <tr class="table_row">
-            <td class="table_data property_name">Host Name</td>
-            <td class="table_data property_value">{{prediction['cert_info']['urlInfo']['hostname']}}</td>
-        </tr>
+        
 
         <tr class="table_row">
             <td class="table_data property_name">Phishing Website</td>
@@ -258,6 +255,11 @@
         <tr class="table_row">
             <td class="table_data property_name">SHA256</td>
             <td class="table_data property_value">{{prediction['sha256']}}</td>
+        </tr>
+        {% if prediction['cert_info']['http'] == 0 %}
+        <tr class="table_row">
+            <td class="table_data property_name">Host Name</td>
+            <td class="table_data property_value">{{prediction['cert_info']['urlInfo']['hostname']}}</td>
         </tr>
 
         <tr class="table_row">
@@ -288,6 +290,17 @@
         <tr class="table_row">
             <td class="table_data property_name">Not After Certificate</td>
             <td class="table_data property_value">{{prediction['cert_info']['urlInfo']['notafter']}}</td>
+        </tr>
+        {% elif prediction['cert_info']['http'] == 1 %}
+        <tr class="table_row">
+            <td class="table_data property_name">SSL Certificate</td>
+            <td class="table_data property_value">{{prediction['cert_info']['urlInfo']}}</td>
+        </tr>
+        {% endif %}
+    
+        <tr class="table_row">
+            <td class="table_data property_name">Error-Based Sql Injection</td>
+            <td class="table_data property_value">{{prediction['cert_info']['sqlVul']}}</td>
         </tr>
 
         
