@@ -331,7 +331,7 @@ label{
 
 .submit_btn{
     background-color: #D8B4E2;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -562,4 +562,136 @@ label{
 #download:hover{
     background-color: #8FCB9B;
     color: #0C090D;
+}
+.feature_container{
+    transition: 0.3s ease all;
+
+}
+.feature_container:hover{
+    transform: scale(1.1);
+
+}
+ /* About Page CSS */
+
+ .about_section{
+    margin: 2rem;
+}
+
+
+.about_img{
+    width: 80%;
+    height: 80%;
+}
+
+
+.facts_img{
+    width: 40%;
+    height: 40%;
+}
+
+.about_hero_content{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto 0;
+}
+
+.about_heading{
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-bottom: 0;
+}
+  
+.about_subtext{
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 150%;
+    margin: 1rem 0;
+}
+
+.about_hero_image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.malware_facts_section{
+    margin:3rem;
+}
+
+.facts_img_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tech_img{
+    height: 60%;
+    width: 60%;
+}
+
+.techstack_heading{
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.tech_img_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.special_container_tech{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.mentor_heading {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.mentor_img_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mentor_img{
+    width: 40%;
+    height: 40%;
+    border-radius: 50%;
+}
+
+.team_img{
+    width: 60%;
+    height: 60%;
+    border-radius: 50%;
+}
+
+.team_member_img_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.team_member_name{
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
 }

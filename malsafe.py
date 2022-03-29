@@ -19,6 +19,10 @@ def main():
 def run():
 	return render_template("analysis.html")
 
+@app.route("/about", methods=['GET', 'POST'])
+def aboutus():
+	return render_template("about.html")
+
 
 
 @app.route("/submit", methods = ['GET', 'POST'])

@@ -18,10 +18,9 @@
         </div>
 
         <div class="navigation_links_container">
-            <a href="#" class="navigation_link">Home</a>
-            <a href="#" class="navigation_link">About</a>
-            <a href="#" class="navigation_link">Documentation</a>
-            <a href="#" class="navigation_link">Team</a>
+            <a href={{url_for('main')}} class="navigation_link">Home</a>
+            <a href={{url_for('aboutus')}} class="navigation_link">About</a>
+            <a href={{url_for('run')}} class="navigation_link">Analysis</a>
         </div>
 
         <div class="nav_button_container">
@@ -105,7 +104,7 @@
 
         let fileContainer = document.getElementById('image_main_container')
         let urlContainer = document.getElementById('url_main_container')
-
+         let submitButton=document.getElementById("submit_btn")   
         fileBtn.addEventListener("click", setFileBtn)
         urlBtn.addEventListener("click", setURLBtn)
 
@@ -117,6 +116,7 @@
             urlBtn.classList.add("selected-option")
             urlContainer.classList.remove("d-none")
             urlContainer.classList.add("d-unset")
+             submitButton.style.display="flex"
         }
 
         function setFileBtn(){
@@ -127,15 +127,16 @@
             urlBtn.classList.remove("selected-option")
             urlContainer.classList.add("d-none")
             urlContainer.classList.remove("d-unset")
+             submitButton.style.display="flex"
         }
         
     </script>
 
-<script>
+    <script>
 
         function verifyURL(){
 
-            let fileButton = document.getElementById('file-option')
+        let fileButton = document.getElementById('file-option')
         let urlButton = document.getElementById('url-option')
         let urlSelected= urlButton.classList.contains("selected-option")
         let fileSelected= fileButton.classList.contains("selected-option")
@@ -156,7 +157,24 @@
 
         }
 
-</script>
+    </script>
+
+    <!-- <script>
+        let filebutton = document.getElementById('file-option')
+        let urlbutton = document.getElementById('url-option')
+        let urlselect=urlbutton.classList.contains("selected-option")
+        let fileselecvt=filebutton.classList.contains("selected-option")
+        if(urlselect){
+            console.log("hello")
+        }
+        else{
+            console.log("TEST")
+        }
+        
+     
+    </script> -->
+
+
 
 
     <script>
