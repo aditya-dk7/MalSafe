@@ -1,0 +1,16 @@
+File Name       : cmd.exe
+File Size       : 289,792
+CRC32           : 1533371570
+MD5             : 8a2122e8162dbef04694b9c3e0b6cdee
+SHA1            : f1efb0fddc156e4c61c5f78a54700e4e7984d55d
+SHA256          : b99d61d874728edc0918ca0eb10eab93d381e7367e377406e65963366c874450
+Import Hash     : 272245e2988e1e430500b852c4fb5e18
+Compiled Time   : Mon Jan 16 09:26:43 2090 UTC
+PE Sections (7) : Name       Size       SHA256
+                  .text      200,704    bfa4c92ac323deed91dc5dd3d176fb81491c1b91ac5838e2b0f28aaf44bd07ab
+                  .rdata     42,496     85999d1e01a53b3bc64722d14bd023dd803c2507a057836eabc9f598bbee2d3c
+                  .data      512        65fe072fae53581096d5a74002d7c9d6729ba20bcaf539e6fb31934eccda295f
+                  .pdata     9,216      4c0ed5c33a7025011b878b45c58ba39fca8221729e8ed94023cc9cd4aa3b40c0
+                  .didat     512        132278e80c5b6f4b68e12f536f7032c37723b8dcf4190180b7a48a9b36954f8a
+                  .rsrc      34,304     678cc5740ef8151e9ad2162532444b3f6e6909e4c0788065b1fce4107e445863
+                  .reloc     1,024      e88459975e2ea6e5b065965b754f65c9117580d97d2c6e8e75a7c28f2a4cf6c5
